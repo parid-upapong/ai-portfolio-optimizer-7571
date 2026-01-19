@@ -1,0 +1,36 @@
+import { NextResponse } from 'next/server';
+import type { NextRequest } from 'next/server';
+
+/**
+ * Edge Middleware for Dynamic Portfolio Subdomains
+ * Example: designer-pro.portfolio-ai.com -> internal routing
+ */
+export function middleware(request: NextRequest) {
+  const url = request.nextUrl;
+  const hostname = request.headers.get('host') || '';
+
+  // Define the main domain
+  const rootDomain = process.env.NEXT_PUBLIC_ROOT_DOMAIN || 'portfolio-ai.com';
+  
+  // Extract subdomain (e.g., 'username' from 'username.portfolio-ai.com')
+  const subdomain = hostname.replace(`.${rootDomain}`, '');
+
+  if (subdomain && subdomain !== rootDomain && subdomain !== 'www') {
+    // Rewrite the URL to the portfolio internal path
+    return NextResponse.rewrite(new URL(`/portfolio/${subdomain}${url.pathname}`, request.url));
+  }
+
+  return NextResponse.next();
+}
+
+export const config = {
+  matcher: [
+    /*
+     * Match all paths except for:
+     * 1. /api routes
+     * 2. /_next (Next.js internals)
+     * 3. /static (public files)
+     */
+    '/((?!api|_next|static|favicon.ico).*)',
+  ],
+};

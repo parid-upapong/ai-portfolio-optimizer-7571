@@ -1,0 +1,28 @@
+{
+  "portfolio_metadata": {
+    "version": "2.0",
+    "strategy_mode": "Growth-Oriented",
+    "target_industry": "FinTech"
+  },
+  "identity": {
+    "name": "Creative Professional",
+    "ai_generated_bio": "Strategic narrative focusing on scalable architecture and user-centric design.",
+    "market_value_score": 85
+  },
+  "projects": [
+    {
+      "id": "proj_001",
+      "original_title": "E-commerce Redesign",
+      "strategic_title": "Conversion Rate Optimization for Global Retail",
+      "impact_metrics": {
+        "conversion_increase": "15%",
+        "load_time_reduction": "2s"
+      },
+      "ai_context_tags": ["Scalability", "Stakeholder Management", "Data-Driven Design"]
+    }
+  ],
+  "skill_matrix": {
+    "core_competencies": ["React", "System Design", "Product Strategy"],
+    "emerging_skills_to_acquire": ["AI Integration", "Prompt Engineering"]
+  }
+}
